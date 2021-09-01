@@ -6,6 +6,7 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import ThumbUpAltOutlined from '@material-ui/icons/ThumbUpAltOutlined';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
+import 'moment/locale/es'; // para mostrar el tiempo en idioma local 
 import { useHistory } from 'react-router-dom';
 
 import { likePost, deletePost } from '../../../actions/posts';
@@ -41,7 +42,7 @@ const Post = ({ post, setCurrentId }) => {
         );
     }
 
-    return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
+    return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Me gusta</>;
   };
 
   const openPost = (e) => {
@@ -61,7 +62,7 @@ const Post = ({ post, setCurrentId }) => {
         <CardMedia className={classes.media} image={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} title={post.title} />
         <div className={classes.overlay}>
           <Typography variant="h6">{post.name}</Typography>
-          <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
+          <Typography variant="body2">{moment(post.createdAt).locale('es').fromNow()}</Typography>
         </div>
         {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
         <div className={classes.overlay2} name="edit">
@@ -91,7 +92,7 @@ const Post = ({ post, setCurrentId }) => {
         </Button>
         {(user?.result?.googleId === post?.creator || user?.result?._id === post?.creator) && (
           <Button size="small" color="secondary" onClick={() => dispatch(deletePost(post._id))}>
-            <DeleteIcon fontSize="small" /> &nbsp; Delete
+            <DeleteIcon fontSize="small" /> &nbsp; Eliminar
           </Button>
         )}
       </CardActions>
