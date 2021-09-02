@@ -1,6 +1,6 @@
 # BLOG
 
-
+![Image text](https://github.com/SergioRodas/MERN-Blog/blob/main/site.jpg)
 ## Introduction
 
 Using React, Node.js, Express & MongoDB.
