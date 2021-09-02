@@ -6,7 +6,7 @@ export default makeStyles((theme) => ({
     objectFit: 'cover',
     width: '100%',
     maxHeight: '600px',
-    maxWidth: '750px',
+    maxWidth: '720px',
 
   },
   card: {
