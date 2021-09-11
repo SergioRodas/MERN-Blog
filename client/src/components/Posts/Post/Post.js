@@ -20,7 +20,7 @@ const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
 
   const userId = user?.result.googleId || user?.result?._id;
-  const hasLikedPost = post.likes.find((like) => like === userId);
+  const hasLikedPost = post?.likes?.find((like) => like === userId);
 
   const handleLike = async () => {
     dispatch(likePost(post._id));
