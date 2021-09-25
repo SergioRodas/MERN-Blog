@@ -48,7 +48,7 @@ const SignUp = () => {
 
       history.push('/');
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
@@ -72,8 +72,9 @@ const SignUp = () => {
             </>
             )}
             <Input name="email" label="Correo electrónico" handleChange={handleChange} type="email" />
+            <p className="errorEmail" style={{margin: "0 0 10px 30px"}}></p>
             <Input name="password" label="Contraseña" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
-            { isSignup && <Input name="confirmPassword" label="Confirmar contraseña" handleChange={handleChange} type="password" /> }
+            <p className="errorPassword" style={{margin: "0 0 10px 30px"}}></p>
           </Grid>
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             { isSignup ? 'Crear cuenta' : 'Iniciar sesión' }

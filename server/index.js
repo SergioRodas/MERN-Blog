@@ -10,10 +10,14 @@ dotenv.config();
 
 app.use(express.json({ limit: '30mb', extended: true }))
 app.use(express.urlencoded({ limit: '30mb', extended: true }))
-app.use(cors());
+var corsOptions = {
+  origin: '*', // Reemplazar con dominio
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions));
 
 app.use('/posts', postRoutes);
-app.use(`/user`, userRouter);
+app.use('/user', userRouter);
 
 app.get('/', (req, res) => {
   res.send('APP IS RUNNING.')
