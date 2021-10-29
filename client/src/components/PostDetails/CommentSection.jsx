@@ -15,11 +15,12 @@ const CommentSection = ({ post }) => {
 
   const handleComment = async () => {
     const newComments = await dispatch(commentPost(`${user?.result?.name}: ${comment}`, post._id));
-
-    setComment('');
-    setComments(newComments);
-
-    commentsRef.current.scrollIntoView({ behavior: 'smooth' });
+    console.log(user)
+    if(user) {
+      setComment('');
+      setComments(newComments);
+      commentsRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -35,6 +36,7 @@ const CommentSection = ({ post }) => {
           ))}
           <div ref={commentsRef} />
         </div>
+        {user ? 
         <div style={{ width: '70%' }}>
           <Typography gutterBottom variant="h6">Deja un comentario</Typography>
           <TextField fullWidth rows={4} variant="outlined" label="Comentario" multiline value={comment} onChange={(e) => setComment(e.target.value)} />
@@ -43,6 +45,8 @@ const CommentSection = ({ post }) => {
             Comentar
           </Button>
         </div>
+        : ''
+        }
       </div>
     </div>
   );

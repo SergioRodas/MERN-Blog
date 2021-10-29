@@ -20,6 +20,7 @@ export const signin = (formData, router) => async (dispatch) => {
     }
     if(message==="Request failed with status code 400"){
       errorPassword.innerHTML = "Contraseña inválida";
+      console.log(error);
     }
     if(message==="Request failed with status code 500"){
       errorPassword.innerHTML = "Algo salió mal :(";

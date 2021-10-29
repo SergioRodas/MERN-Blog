@@ -22,7 +22,7 @@ const CreatorOrTag = () => {
     // eslint-disable-next-line
   }, []);
 
-  if (!posts.length && !isLoading) return 'No posts';
+  if (!posts.length && !isLoading) return 'No se encontraron coincidencias';
 
   return (
     <div>
