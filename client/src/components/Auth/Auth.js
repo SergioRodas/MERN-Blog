@@ -24,6 +24,7 @@ const SignUp = () => {
   const handleShowPassword = () => setShowPassword(!showPassword);
 
   const switchMode = () => {
+    resetErrorStyle()
     setForm(initialState);
     setIsSignup((prevIsSignup) => !prevIsSignup);
     setShowPassword(false);
@@ -54,7 +55,17 @@ const SignUp = () => {
 
   const googleError = () => console.log('El inicio de sesión de Google no se realizó correctamente. Inténtalo de nuevo más tarde.');
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const resetErrorStyle = () => {
+    const errorEmail = document.querySelector(".errorEmail");
+    const errorPassword = document.querySelector(".errorPassword");
+    errorEmail.style.display = "none"
+    errorPassword.style.display = "none"
+  }
+
+  const handleChange = (e) => {
+    resetErrorStyle()
+    setForm({ ...form, [e.target.name]: e.target.value })
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -68,13 +79,13 @@ const SignUp = () => {
             { isSignup && (
             <>
               <Input name="firstName" label="Nombre" handleChange={handleChange} autoFocus half />
-              <Input name="lastName" label="Apellidos" handleChange={handleChange} half />
+              <Input name="lastName" label="Apellido" handleChange={handleChange} half />
             </>
             )}
             <Input name="email" label="Correo electrónico" handleChange={handleChange} type="email" />
-            <p className="errorEmail" style={{margin: "0 0 10px 30px"}}></p>
+            <p className="errorEmail"></p>
             <Input name="password" label="Contraseña" handleChange={handleChange} type={showPassword ? 'text' : 'password'} handleShowPassword={handleShowPassword} />
-            <p className="errorPassword" style={{margin: "0 0 10px 30px"}}></p>
+            <p className="errorPassword"></p>
           </Grid>
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             { isSignup ? 'Crear cuenta' : 'Iniciar sesión' }

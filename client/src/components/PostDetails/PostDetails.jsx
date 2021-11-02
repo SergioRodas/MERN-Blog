@@ -34,7 +34,7 @@ const Post = () => {
   if (isLoading) {
     return (
       <Paper elevation={6} className={classes.loadingPaper}>
-        <CircularProgress size="7em" />
+        <CircularProgress color="inherit" size="7em" />
       </Paper>
     );
   }
